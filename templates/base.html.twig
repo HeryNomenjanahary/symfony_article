@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel='stylesheet' href=" {{ asset('css/bootstrap.min.css') }} " >
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md bg-success navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{{ path('home')}}">Mon Agence</a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu is same as 'properties'  %} active {% endif %} "  href=" {{path('property.index')}} ">Acheter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>
